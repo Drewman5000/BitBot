@@ -15,7 +15,6 @@
   "author": "Andrew Hyland",
   "license": "GPL-3.0-only",
   "dependencies": {
-    "discord.js": "^11.5.1",
-    "dotenv": "^8.2.0"
+    "discord.js": "^11.5.1"
   }
 }
