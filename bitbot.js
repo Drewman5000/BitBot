@@ -1,6 +1,13 @@
 require('dotenv').config();
 const Discord = require('discord.js');
 const bitbot = new Discord.Client();
+bitbot.commands = new Discord.Collection();
+const bitbotCommands = require('./commands');
+
+Object.keys(bitbotCommands).map(key => {
+  bitbot.commands.set(bitbotCommands[key].name, bitbotCommands[key]);
+});
+
 const TOKEN = process.env.TOKEN;
 
 bitbot.login(TOKEN);
@@ -10,16 +17,16 @@ bitbot.on('ready', () => {
 });
 
 bitbot.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('pong');
-    msg.channel.send('pong');
+  const args = msg.content.split(/ +/);
+  const command = args.shift().toLowerCase();
+  console.info(`Called command: ${command}`);
 
-  } else if (msg.content.startsWith('!kick')) {
-    if (msg.mentions.users.size) {
-      const taggedUser = msg.mentions.users.first();
-      msg.channel.send(`You wanted to kick: ${taggedUser.username}`);
-    } else {
-      msg.reply('Please tag a valid user!');
-    }
+  if (!bitbot.commands.has(command)) return;
+
+  try {
+    bitbot.commands.get(command).execute(msg, args);
+  } catch (error) {
+    console.error(error);
+    msg.reply('There was an error trying to execute that command!');
   }
 });
