@@ -1,0 +1,21 @@
+{
+  "name": "bitbot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BitBot replies Yes or No",
+  "main": "bitbot.js",
+  "homepage": "https://github.com/Drewman5000/BitBot",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Drewman5000/BitBot"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Hyland",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0"
+  }
+}
