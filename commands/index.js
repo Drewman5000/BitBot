@@ -1,3 +1,4 @@
 module.exports = {
-	Ping: require('./ping'),
+	Bit: require('./bit'),
+	Bitbot: require('./bit')
 };
