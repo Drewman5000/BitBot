@@ -8,7 +8,7 @@ module.exports = {
 		}
 		let reply = "";
 		let result = coinFlip(0, 1);
-		reply = (result) ? "Yes." : "No.";
+		reply = (result) ? "Yes. :white_check_mark:" : "No. :no_entry_sign:";
 
 		msg.channel.send(reply);
 	},

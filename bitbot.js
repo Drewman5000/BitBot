@@ -1,4 +1,5 @@
-const { prefix, token } = require('./config.json');
+require('dotenv').config();
+const prefix = require('./config.json');
 const Discord = require('discord.js');
 const bitbot = new Discord.Client();
 bitbot.commands = new Discord.Collection();
@@ -8,14 +9,16 @@ Object.keys(bitbotCommands).map(key => {
   bitbot.commands.set(bitbotCommands[key].name, bitbotCommands[key]);
 });
 
-bitbot.login(token);
+const TOKEN = process.env.TOKEN;
+
+bitbot.login(TOKEN);
 
 bitbot.on('ready', () => {
   console.info(`Logged in as ${bitbot.user.tag}!`);
 });
 
 bitbot.on('message', msg => {
-  if (msg.content.substring(0, 1) == prefix) {
+  if (msg.content.substring(0, 1) == '!') {
   const args = msg.content.substring(1).split(/\s+/);
   const command = args.shift().toLowerCase();
   console.info(`Called command: ${command}`);
