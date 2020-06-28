@@ -1,5 +1,5 @@
 require('dotenv').config();
-const prefix = require('./config.json');
+const { prefix, author } = require('./config.json');
 const Discord = require('discord.js');
 const bitbot = new Discord.Client();
 bitbot.commands = new Discord.Collection();
@@ -18,7 +18,7 @@ bitbot.on('ready', () => {
 });
 
 bitbot.on('message', msg => {
-  if (msg.content.substring(0, 1) == '!') {
+  if (msg.content.substring(0, 1) == prefix) {
   const args = msg.content.substring(1).split(/\s+/);
   const command = args.shift().toLowerCase();
   console.info(`Called command: ${command}`);
