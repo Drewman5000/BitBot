@@ -1,5 +1,5 @@
 require('dotenv').config();
-const prefix = require('./config.json');
+const { prefix, author } = require('./config.json');
 const Discord = require('discord.js');
 const bitbot = new Discord.Client();
 bitbot.commands = new Discord.Collection();
