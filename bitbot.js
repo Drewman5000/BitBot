@@ -18,9 +18,18 @@ bitbot.on('ready', () => {
 });
 
 bitbot.on('message', msg => {
-  if (msg.content.substring(0, 1) == prefix) {
-  const args = msg.content.substring(1).split(/\s+/);
-  const command = args.shift().toLowerCase();
+  const args = msg.content.split(/\s+/);
+  commandFilter = (arr, query) => {
+    return arr.filter(function(el) {
+      return el.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    })
+  }
+  let commands = (commandFilter(args, prefix));
+
+  for ( el of commands ) {
+
+  if (el.substring(0, 1) == prefix) {
+  const command = el.substring(1).toLowerCase();
   console.info(`Called command: ${command}`);
 
   if (!bitbot.commands.has(command)) return;
@@ -32,4 +41,5 @@ bitbot.on('message', msg => {
       msg.reply('There was an error trying to execute that command!');
     };
   }
+}
 });
