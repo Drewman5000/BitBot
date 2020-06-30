@@ -28,18 +28,18 @@ bitbot.on('message', msg => {
 
   for ( el of commands ) {
 
-  if (el.substring(0, 1) == prefix) {
-  const command = el.substring(1).toLowerCase();
-  console.info(`Called command: ${command}`);
+    if (el.substring(0, 1) == prefix) {
+      const command = el.substring(1).toLowerCase();
+      console.info(`Called command: ${command}`);
 
-  if (!bitbot.commands.has(command)) return;
+      if (!bitbot.commands.has(command)) return;
 
-    try {
-      bitbot.commands.get(command).execute(msg, args);
-    } catch (error) {
-      console.error(error);
-      msg.reply('There was an error trying to execute that command!');
-    };
+      try {
+        bitbot.commands.get(command).execute(msg, args);
+      } catch (error) {
+        console.error(error);
+        msg.reply('There was an error trying to execute that command!');
+      };
+    }
   }
-}
 });
