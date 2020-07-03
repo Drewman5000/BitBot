@@ -2,7 +2,6 @@ module.exports = {
 	name: 'bit',
 	description: 'Yes or No.',
 	execute(msg, args) {
-		//msg.reply('pong');
 		const choices = require('./choices.json');
 		const coinFlip = (min, max) => {
   			return Math.floor(Math.random() * (max - min + 1) ) + min;
