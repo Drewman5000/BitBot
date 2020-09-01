@@ -18,8 +18,11 @@ bitbot.on('ready', () => {
 });
 
 bitbot.on('message', msg => {
+  const args = msg.content.split(/\s+/);
+
   const message = msg.content;
   const regex = /(!)(\bbit\b)/mig;
+  // const regex = /(${prefix})(\b${command}\b)/mig;
   let m;
 
 while ((m = regex.exec(message)) !== null) {
@@ -29,22 +32,8 @@ while ((m = regex.exec(message)) !== null) {
   }
   // The result can be accessed through the `m`-variable.
   m.forEach((match, groupIndex) => {
-    console.log(`Found match, group ${groupIndex}: ${match}`);
-  });
-}
-
-  const args = msg.content.split(/\s+/);
-  commandFilter = (arr, query) => {
-    return arr.filter(function(el) {
-      return el.toLowerCase().indexOf(query.toLowerCase()) !== -1
-    })
-  }
-  let commands = (commandFilter(args, prefix));
-
-  for ( el of commands ) {
-
-    if (el.substring(0, 1) == prefix) {
-      const command = el.substring(1).toLowerCase();
+    if (groupIndex === 2) {
+      const command = match.toLowerCase();
       console.info(`Called command: ${command}`);
 
       if (!bitbot.commands.has(command)) return;
@@ -55,6 +44,10 @@ while ((m = regex.exec(message)) !== null) {
         console.error(error);
         msg.reply('There was an error trying to execute that command!');
       };
+
     }
-  }
+
+    
+  });
+}
 });
