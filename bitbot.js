@@ -18,6 +18,21 @@ bitbot.on('ready', () => {
 });
 
 bitbot.on('message', msg => {
+  const message = msg.content;
+  const regex = /(!)(\bbit\b)/mig;
+  let m;
+
+while ((m = regex.exec(message)) !== null) {
+  // This is necessary to avoid infinite loops with zero-width matches
+  if (m.index === regex.lastIndex) {
+    regex.lastIndex++;
+  }
+  // The result can be accessed through the `m`-variable.
+  m.forEach((match, groupIndex) => {
+    console.log(`Found match, group ${groupIndex}: ${match}`);
+  });
+}
+
   const args = msg.content.split(/\s+/);
   commandFilter = (arr, query) => {
     return arr.filter(function(el) {
