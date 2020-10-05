@@ -1,4 +1,4 @@
 module.exports = {
-	Bit: require('./bit'),
-	Coin: require('./coin')
+	Bit: require("./bit"),
+	Coin: require("./coin"),
 };

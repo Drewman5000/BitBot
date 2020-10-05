@@ -1,4 +1,20 @@
 {
-	"yes": ["Yes. Yes.",":ballot_box_with_check:",":white_check_mark:",":heavy_check_mark:",":+1:",":green_heart:"],
-	"no": ["Negativo.",":no_entry:",":no_entry_sign:",":no_mouth:",":no_pedestrians:",":no_mobile_phones:",":-1:",":small_red_triangle_down:"]
+	"yes": [
+		"Yes. Yes.",
+		":ballot_box_with_check:",
+		":white_check_mark:",
+		":heavy_check_mark:",
+		":+1:",
+		":green_heart:"
+	],
+	"no": [
+		"Negativo.",
+		":no_entry:",
+		":no_entry_sign:",
+		":no_mouth:",
+		":no_pedestrians:",
+		":no_mobile_phones:",
+		":-1:",
+		":small_red_triangle_down:"
+	]
 }
