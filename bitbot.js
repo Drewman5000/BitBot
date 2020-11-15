@@ -18,7 +18,7 @@ bitbot.on('ready', () => {
 });
 
 bitbot.on('message', msg => {
-  const args = msg.content.split(/\s+/);
+  // const args = msg.content.split(/\s+/);
   const message = msg.content;
   // const regex = /(!)(\b(bit|coin)\b)/ig;
   
@@ -42,10 +42,10 @@ bitbot.on('message', msg => {
           if (!bitbot.commands.has(command)) return;
 
           try {
-            bitbot.commands.get(command).execute(msg, args);
+            bitbot.commands.get(command).execute(msg); // This is where to pass args back in to the command if needed.
           } catch (error) {
             console.error(error);
-            msg.reply('There was an error trying to execute that command! Ask Andrew to check the code for errors.');
+            msg.reply('There was an error trying to execute that command!');
           };
         }
       });
